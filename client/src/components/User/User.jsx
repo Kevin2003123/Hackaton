@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee, faUse } from '@fortawesome/free-solid-svg-icons'
 import {faUser} from '@fortawesome/free-regular-svg-icons'
 import {faYoutube} from '@fortawesome/free-brands-svg-icons'
+import Alert from 'react-bootstrap/Alert';
+
 const User = () => {
   const dispatch = useDispatch();
   const user1Handler = () => {
@@ -17,7 +19,7 @@ const User = () => {
 
   const user1 = useSelector((state) => state.user.users);
   const user2 = useSelector((state) => state.user2.users2);
-  return (
+  return <>
     <div>
       <FontAwesomeIcon icon={faYoutube} />
       <FontAwesomeIcon icon={faCoffee} />
@@ -69,7 +71,7 @@ const User = () => {
         </div>
       </div>
     </div>
-  );
+  </>
 };
 
 export default User;

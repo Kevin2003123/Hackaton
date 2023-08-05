@@ -1,12 +1,11 @@
 
-import { GET_USERS } from "../actions/action-type"
+import { GET_USERS, USER_VALIDATE } from "../actions/action-type"
 const initialState = {
-    users: []
+    users: [],
+    user: {}
 };
 
 const user = (state = initialState, { type, payload }) => {
-
-
     switch (type) {
         case GET_USERS:
             return {
@@ -14,6 +13,11 @@ const user = (state = initialState, { type, payload }) => {
                 users: payload
             };
 
+        case USER_VALIDATE:
+            return {
+                ...state,
+                user: payload
+            };
 
         default:
             return state;
