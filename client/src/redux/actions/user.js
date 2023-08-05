@@ -33,18 +33,8 @@ export const getUsers2 = () => {
 export const validateUser = (username, password) => {
   return async (dispatch) => {
     try {
-      let formData = new FormData();
-      formData.append('username', username);
-      formData.append('password', password);
 
-      const config = {
-        headers: {
-          'Content-Type': 'multipart/form-data' // Configura el encabezado adecuado para FormData
-        }
-      };
-
-      const { data } = await axios.post("/user/validate", formData, config);
-
+      const { data } = await axios.post("/user/validate", {username, password});
       dispatch({
         type: USER_VALIDATE,
         payload: data,
