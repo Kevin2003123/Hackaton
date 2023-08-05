@@ -5,7 +5,6 @@ import { loginValidationSchema } from "../../ValidactionsSchemas/loginValidation
 import { TextInput } from "../InputText/InputText";
 import { useDispatch, useSelector } from "react-redux";
 import { validateUser } from "../../redux/actions/user";
-import Col from 'react-bootstrap/Col';
 import { useNavigate } from "react-router-dom";
 
 const initialValues = {
@@ -73,9 +72,9 @@ useEffect(() => {
                 type="password"
               />
               <div className={style["buttons-group"]}>
-                <Col xl={12}>
+                <div className={style["buttons-container"]}>
                   <button type="submit" className={`${style["button"]}`}>Login</button>
-                </Col>
+                </div>
               </div>
             </Form>
 
