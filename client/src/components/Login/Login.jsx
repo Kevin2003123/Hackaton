@@ -48,7 +48,7 @@ export default function Login() {
                 name="password"
                 type="password"
               />
-              <Row className="">
+              <Row className={style["buttons-group"]}>
                 <Col xl={12}>
                   <button type="submit" className="btn btn-primary">Login(users)</button>
                   <button type="submit" className="btn btn-primary">Login(Restaurants)</button>
