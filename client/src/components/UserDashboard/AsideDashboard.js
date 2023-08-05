@@ -12,7 +12,7 @@ return (
         <div className={Style['ContenedorAside']}>
             <div id={Style['budge']}>
                 <h3>RD$0.00</h3>
-                <span>Budge Available</span>
+                <span>Budged Available</span>
             </div>
 
             <div id={Style['status-order']}>
