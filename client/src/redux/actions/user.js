@@ -37,9 +37,16 @@ export const validateUser = (username, password) => {
       let formData = new FormData();
       formData.append('username', username);
       formData.append('password', password);
-      
-      const { data } = await axios.post("https://hackathon.voiceteamcall.com?token=dGVhbTA1OmE4bGJxMGI2MQ==", formData);
-      return dispatch({
+
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data' // Configura el encabezado adecuado para FormData
+        }
+      };
+
+      const { data } = await axios.post("/user/validate", formData, config);
+
+      dispatch({
         type: USER_VALIDATE,
         payload: data,
       });
@@ -47,4 +54,5 @@ export const validateUser = (username, password) => {
       console.log(error.message);
     }
   };
+
 };
