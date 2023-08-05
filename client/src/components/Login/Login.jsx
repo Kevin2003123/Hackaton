@@ -20,6 +20,8 @@ export default function Login() {
 
   const loginHandler = (values, resetForm) => {
     const { username, password } = values;
+    console.log(username);
+    console.log(password);
     dispatch(validateUser(username, password));
   }
 
@@ -42,20 +44,26 @@ export default function Login() {
                 label="Nombre: "
                 name="username"
                 type="text"
+                placeholder = "Username"
               />
               <TextInput
                 label="password: "
                 name="password"
                 type="password"
+                placeholder = "Password"
               />
               <Row className={style["buttons-group"]}>
-                <Col xl={12}>
-                  <button type="submit" className="btn btn-primary">Login(users)</button>
-                  <button type="submit" className="btn btn-primary">Login(Restaurants)</button>
+                <Col className="mb-2" xl={6}>
+                  <button type="submit" className={`${style["button"]} btn btn-primary`}>Login(users)</button>
                 </Col>
-                <Col xl={12}>
-                  <button type="submit" className="btn btn-primary">Login(Admin)</button>
-                  <button type="submit" className="btn btn-primary">Login(Supervisor)</button>
+                <Col className="mb-2" xl={6}>
+                  <button type="submit" className={`${style["button"]} btn btn-primary`}>Login(Restaurants)</button>
+                </Col>
+                <Col xl={6}>
+                  <button type="submit" className={`${style["button"]} btn btn-primary`}>Login(Admin)</button>
+                </Col>
+                <Col xl={6}>
+                  <button type="submit" className={`${style["button"]} btn btn-primary`}>Login(Supervisor)</button>
                 </Col>
               </Row>
             </Form>
