@@ -5,10 +5,11 @@ const validateUser = async (req, res) => {
     
 
     try {
-        const {username, password} = req.body;
-        let formData = new FormData();
-        formData.append('name', username );
-        formData.append('password', password);
+        const {formData} = req.body;
+        //let formData = new FormData();
+        //formData.append('username', username );
+        //formData.append('password', password);
+        
         const {data} = await axios.post("https://hackathon.voiceteamcall.com?token=dGVhbTA1OmE4bGJxMGI2MQ==", formData)
 
         res.status(200).json(data);
