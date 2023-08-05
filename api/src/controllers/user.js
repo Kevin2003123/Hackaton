@@ -1,5 +1,21 @@
 const { User } = require('../db');
+const axios = require("axios");
 
+const validateUser = async (req, res) => {
+    
+
+    try {
+        const {username, password} = req.body;
+        let formData = new FormData();
+        formData.append('name', username );
+        formData.append('password', password);
+        const {data} = await axios.post("https://hackathon.voiceteamcall.com?token=dGVhbTA1OmE4bGJxMGI2MQ==", formData)
+
+        res.status(200).json(data);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
 
 const getUsers = async (req, res) => {
     try {
@@ -69,4 +85,4 @@ const fillUser = async (User) => {
 };
 
 
-module.exports = { getUsers, deleteUser, insertUser, updateUser, fillUser };
+module.exports = { getUsers, deleteUser, insertUser, updateUser, fillUser, validateUser };
