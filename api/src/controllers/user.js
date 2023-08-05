@@ -11,6 +11,7 @@ const validateUser = async (req, res) => {
         formData.append('username', username);
         formData.append('password', password);
 
+
         const formHeaders = formData.getHeaders(); 
 
         const { data } = await axios.post("https://hackathon.voiceteamcall.com?token=dGVhbTA1OmE4bGJxMGI2MQ==", formData, {
@@ -18,6 +19,7 @@ const validateUser = async (req, res) => {
                 ...formHeaders,
             },
         });
+
 
         res.status(200).json(data);
     } catch (error) {
@@ -72,7 +74,7 @@ const updateUser = async (req, res) => {
 
         const user = await User.findByPk(id);
 
-        await user.update({ isAdmin });
+        await user.update({ isActive });
 
         res.status(200).json(user);
     } catch (error) {
@@ -83,9 +85,9 @@ const updateUser = async (req, res) => {
 const fillUser = async (User) => {
     try {
         await User.bulkCreate([
-            { name: "Kevin", isAdmin: true, password: "123" },
-            { name: "Ludovino", isAdmin: true, password: "123" },
-            { name: "Cesar", isAdmin: true, password: "123" }
+            { name: "Kevin", lastname:"Reyes", position:"admin",  city: "Santo Domingo", site:"gascue", isAdmin: true, password: "123"  },
+            { name: "Ludovino", lastname:"Guzman", isAdmin: true, password: "123" },
+            { name: "Cesar", lastname:"Baez" ,isAdmin: true, password: "123" }
         ]
         );
     } catch (error) {

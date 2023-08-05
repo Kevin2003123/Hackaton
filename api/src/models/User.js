@@ -31,6 +31,7 @@ module.exports = (sequelize) => {
       position: {
         type: DataTypes.STRING,
         allowNull: false,
+        default: "user"
       },
 
       isActive: {
@@ -45,18 +46,23 @@ module.exports = (sequelize) => {
       isAdmin: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
+        default: false
       },
       isReception: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
+        default: false
       },
       city:{
         type: DataTypes.STRING,
         allowNull: false,
+        default: "Santo Domingo"
+
       },
       site:{
         type: DataTypes.STRING,
         allowNull: false,
+        default: "A"
       },
     },
     {

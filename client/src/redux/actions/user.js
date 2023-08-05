@@ -33,10 +33,9 @@ export const getUsers2 = () => {
 export const validateUser = (username, password) => {
   return async (dispatch) => {
     try {
-      
-      const { data } = await axios.post("/user/validate", {username, password} );
 
-      return dispatch({
+      const { data } = await axios.post("/user/validate", {username, password});
+      dispatch({
         type: USER_VALIDATE,
         payload: data,
       });
@@ -44,4 +43,5 @@ export const validateUser = (username, password) => {
       console.log(error.message);
     }
   };
+
 };
