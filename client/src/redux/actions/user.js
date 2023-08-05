@@ -33,13 +33,9 @@ export const getUsers2 = () => {
 export const validateUser = (username, password) => {
   return async (dispatch) => {
     try {
-    
-      const { data } = await axios.post("/user/validate", 
-       {
-        username,
-        password
-       }
-      );
+      
+      const { data } = await axios.post("/user/validate", {username, password} );
+
       return dispatch({
         type: USER_VALIDATE,
         payload: data,
