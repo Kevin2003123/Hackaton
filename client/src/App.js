@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.min.js"
 import Header from './components/UserDashboard/UserDashboard'
 import PastOrders from './components/UserDashboard/PastOrders/PastOrders';
+import SuperDashboard from './components/SuperDashboard/ReceiveOrders/ReceiveOrders';
+
 function App() {
   return (
     
@@ -13,6 +15,7 @@ function App() {
         <Route exact path="/" element={<User/>} />
         <Route exact path="/userDashboard" element={<Header/>} />
         <Route exact path="/pastOrders" element={<PastOrders/>} />
+        <Route exact path="/superDashboard" element={<SuperDashboard/>} />
       </Routes>
    
   );
