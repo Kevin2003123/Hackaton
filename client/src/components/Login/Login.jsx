@@ -46,10 +46,11 @@ useEffect(() => {
 }, [user]);
 
   return (
-    <div className={style["login-container"]}>
+    <div id={style["loginBG"]} className={style["login-container"]}>
       <div className={style["login"]}>
         <header className={style["login-header"]}>
           <h2>Login</h2>
+          <span>VoiceTeam Excellent Food</span>
         </header>
 
         <section className={style["input-section"]}>
