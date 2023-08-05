@@ -8,7 +8,7 @@
   background-color: var(--background-white);
   border: solid 1px rgba(0,0,0,.05);
   border-radius: 3px;
-  max-width: 760px;
+  max-width: 550px;
   padding: 1.5rem;
 }
 
@@ -17,4 +17,21 @@
   font-weight: bold;
   display: flex;
   justify-content: center;
+}
+
+.buttons-group {
+  margin-top: 1rem;
+  display: flex;
+}
+
+.button {
+  width: 100%;
+  background-color: #EB6724;
+  border: 0;
+  border-radius: 4px;
+  color: var(--textWhite);
+}
+
+.button:hover {
+  background-color: #d45e23;
 }

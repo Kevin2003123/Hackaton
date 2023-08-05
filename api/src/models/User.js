@@ -62,7 +62,7 @@ module.exports = (sequelize) => {
       site:{
         type: DataTypes.STRING,
         allowNull: false,
-        default: "este"
+        default: "A"
       },
     },
     {

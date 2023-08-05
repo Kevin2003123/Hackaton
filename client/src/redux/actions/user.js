@@ -1,12 +1,11 @@
 
 import { GET_USERS, GET_USERS2, USER_VALIDATE } from "./action-type"
-import axios2 from "../../axios"
-import axios from "axios"
+import axios from "../../axios"
 
 export const getUsers = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios2.get("/users");
+      const { data } = await axios.get("/users");
       return dispatch({
         type: GET_USERS,
         payload: data,
@@ -20,7 +19,7 @@ export const getUsers = () => {
 export const getUsers2 = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios2.get("/users");
+      const { data } = await axios.get("/users");
       return dispatch({
         type: GET_USERS2,
         payload: data,
