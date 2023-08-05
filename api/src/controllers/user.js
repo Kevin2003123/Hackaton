@@ -1,16 +1,23 @@
 const { User } = require('../db');
 const axios = require("axios");
+const FormData = require("form-data"); // Import the form-data library
 
 const validateUser = async (req, res) => {
-    
-
     try {
         const {username, password} = req.body;
-        let formData = new FormData();
-        formData.append('username', username );
+        console.log(username);
+
+        const formData = new FormData();
+        formData.append('username', username);
         formData.append('password', password);
-        //console.log(username);
-        const {data} = await axios.post("https://hackathon.voiceteamcall.com?token=dGVhbTA1OmE4bGJxMGI2MQ==", formData)
+
+        const formHeaders = formData.getHeaders(); 
+
+        const { data } = await axios.post("https://hackathon.voiceteamcall.com?token=dGVhbTA1OmE4bGJxMGI2MQ==", formData, {
+            headers: {
+                ...formHeaders,
+            },
+        });
 
         res.status(200).json(data);
     } catch (error) {
