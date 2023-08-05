@@ -6,7 +6,7 @@ const { getUsers, insertUser, updateUser, deleteUser } = require("../controllers
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-
+router.post("/user/validate", )
 router.get("/users", getUsers);
 router.post("/user", insertUser)
 router.put("/user/:id", updateUser)
