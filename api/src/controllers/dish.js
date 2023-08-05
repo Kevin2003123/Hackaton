@@ -24,7 +24,7 @@ const getDishesByRestaurantId = async (req, res) => {
     }
   };
 
-const fillDish = async (Dish, Restaurant, RestaurantDish) => {
+const fillDish = async (Dish, Restaurant) => {
   console.log("llegue aquis");
 
   try {
@@ -167,7 +167,7 @@ const fillDish = async (Dish, Restaurant, RestaurantDish) => {
       
     
     Dish.bulkCreate(data)
-
+/*
     for(const element of data2){
       const restaurant= await Restaurant.findByPk(element.RestaurantId)
 
@@ -175,7 +175,7 @@ const fillDish = async (Dish, Restaurant, RestaurantDish) => {
 
     }
     
-
+*/
   } catch (error) {
     console.error("Error al crear y asociar los registros:", error);
   }

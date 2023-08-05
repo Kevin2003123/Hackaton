@@ -1,11 +1,11 @@
 const { Router } = require("express");
 const router = Router();
-const {getLocations} = require("../controllers/location")
+const {getOrders} = require("../controllers/order")
 
 
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.get("/location", getLocations)
+router.get("/orders", getOrders)
 
 module.exports = router;
