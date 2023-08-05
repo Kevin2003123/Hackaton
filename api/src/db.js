@@ -3,6 +3,9 @@ const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
 const user = require("./models/User");
+const restaurant = require("./models/Restaurant");
+const location = require("./models/Location")
+const dish = require("./models/Dish")
 
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
@@ -41,13 +44,28 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 
 user(sequelize);
+restaurant(sequelize)
+dish(sequelize)
+location(sequelize)
+
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 const {
-  User,
+  Restaurant,
+  Location,
+  Dish
 } = sequelize.models;
 
+
+Restaurant.belongsTo(Location)
+Location.hasOne(Restaurant)
+
+Restaurant.hasOne(Dish)
+Dish.belongsTo(Restaurant)
+
+Restaurant.belongsToMany(Dish, { through: "RestaurantDish" });
+Dish.belongsToMany(Restaurant, { through: "RestaurantDish" });
 /*
 User.hasOne(Rating);
 Rating.belongsTo(User);

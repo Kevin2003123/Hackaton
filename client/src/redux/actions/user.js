@@ -33,10 +33,19 @@ export const getUsers2 = () => {
 export const validateUser = (username, password) => {
   return async (dispatch) => {
     try {
-      
-      const { data } = await axios.post("/user/validate", {username, password} );
+      let formData = new FormData();
+      formData.append('username', username);
+      formData.append('password', password);
 
-      return dispatch({
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data' // Configura el encabezado adecuado para FormData
+        }
+      };
+
+      const { data } = await axios.post("/user/validate", formData, config);
+
+      dispatch({
         type: USER_VALIDATE,
         payload: data,
       });
@@ -44,4 +53,5 @@ export const validateUser = (username, password) => {
       console.log(error.message);
     }
   };
+
 };
