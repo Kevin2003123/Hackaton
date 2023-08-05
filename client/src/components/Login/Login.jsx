@@ -28,7 +28,21 @@ export default function Login() {
 
 useEffect(() => {
   if (user.data) {
-    navigate("/");
+    const {isActive, isAdmin, isReception} = user.data
+
+    if (isActive) {
+      
+      if (isAdmin) {
+        navigate("/userDashboard");
+      }
+
+      if (isReception) {
+        navigate("/superDashboard");
+      }
+
+      navigate("/userDashboard");
+    }
+
   }
 }, [user]);
 

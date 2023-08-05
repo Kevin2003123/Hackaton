@@ -1,0 +1,187 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    background-color: black;
+}
+
+.header-userDashboard {
+    display: flex;
+    margin: 10px;
+    border-bottom: 1px solid yellow;
+}
+
+.header-userDashboard h2 span{
+    font-weight: bold;
+    color: orangered;
+    letter-spacing: 0px;
+}
+
+.header-userDashboard h2{
+    letter-spacing: 5px;
+}
+
+
+#contenedorbtn{
+    margin-left: auto;
+}
+
+#contenedorbtn button{
+    margin-left: 10px;
+}
+
+#ContenedorMain{
+    width: 90%;
+    height: 800px;
+    display: flex;
+    justify-content: space-around;
+    background-color: yellow;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+#budge{
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgba(32, 32, 32, 0.1);
+    margin-bottom: 30px;
+}
+
+#budge h3{
+    font-weight: bolder;
+}
+
+.ContenedorAside{
+    height: 370px;
+    background-color: lightyellow;
+    padding: 40px;
+    width: 350px;
+    border-radius: 5px;
+
+}
+
+#status-order{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(32, 32, 32, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#status-order p{
+    font-weight: bold;
+}
+
+#status-order span{
+    font-size: 0.8em;
+}
+
+#title-newOrder{
+    border-bottom: 4px solid grey;
+    padding-bottom: 10px;
+    margin: 20px;
+    text-align: center;
+    margin-left: auto;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.ContenedorOrder{
+    height: fit-content;
+    background-color: lightyellow;
+    padding: 40px;
+    width: 350px;
+    border-radius: 5px;
+
+}
+
+.ContenedorDishes{
+    height: fit-content;
+    background-color: lightyellow;
+    padding: 40px;
+    width: 350px;
+}
+
+#price-order{
+    height: fit-content;
+    background-color: lightyellow;
+    padding: 40px;
+    width: 350px;
+    border-radius: 5px;
+}
+
+#price-order p{
+    font-weight: bold;
+    font-size: 2em;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(32, 32, 32, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#price-order #PlateSelected{
+    color: orangered;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+#cboPlace{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(32, 32, 32, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.ContenedorOrder #label-menus ul li{
+    font-size: 0.8em;
+    margin-bottom: 5px;
+}
+
+#cboPlace label{
+    font-weight: bold;
+}
+
+.ContenedorOrder #label-menus ul li span{
+    font-weight: bold;
+    color: orangered;
+}
+
+.ContenedorOrder #label-menus h2{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#budgepay_1, #budgepay_2{
+    display: flex;
+    justify-content: space-between;
+}
+
+#budgepay_2{
+    font-weight: bolder;
+}
+
+.container-plate-selected{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.0em;
+}
+
+.container-plate-selected ul li{
+    font-weight: bold;
+    color: orangered;
+}
+
+#botonPlaceOrder{
+    text-align: center;
+    width: -webkit-fill-available;
+    margin-top: 2dvb;
+    font-weight: bold;
+}
