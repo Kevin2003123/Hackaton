@@ -40,3 +40,7 @@
 .button:hover {
   background-color: #d45e23;
 }
+
+.buttons-container {
+  width: 100%;
+}
