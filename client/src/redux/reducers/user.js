@@ -1,5 +1,5 @@
 
-import { GET_USERS, USER_VALIDATE, GET_USER_BY_USERNAME } from "../actions/action-type"
+import { GET_USERS, USER_VALIDATE, GET_USER_BY_USERNAME, LOG_OUT } from "../actions/action-type"
 const initialState = {
     users: [],
     user: {},
@@ -24,6 +24,11 @@ const user = (state = initialState, { type, payload }) => {
                 ...state,
                 userByUserName: payload
             };
+        case LOG_OUT: 
+          return {
+            ...state,
+            user: payload
+          }
 
         default:
             return state;

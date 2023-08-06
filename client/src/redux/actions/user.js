@@ -1,5 +1,5 @@
 
-import { GET_USERS, GET_USERS2, USER_VALIDATE, GET_USER_BY_USERNAME } from "./action-type"
+import { GET_USERS, GET_USERS2, USER_VALIDATE, GET_USER_BY_USERNAME, LOG_OUT } from "./action-type"
 import axios from "../../axios"
 
 export const getUsers = () => {
@@ -57,5 +57,12 @@ export const getUserByUserName = (user) => {
     } catch (error) {
       console.log(error.message);
     }
+  };
+};
+
+export const LogoutUser = () => {
+  return {
+    type: LOG_OUT,
+    payload: {},
   };
 };

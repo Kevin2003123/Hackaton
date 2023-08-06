@@ -2,17 +2,31 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Style from './userDasboard.module.css';
 import Aside from './AsideDashboard';
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { LogoutUser } from '../../redux/actions/user'; 
 
+const Header = () => {
 
-const header = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const Logout = () => {
+        dispatch(LogoutUser());
+        navigate("/login");    
+    }
+
+    const navigateToPastOrders = () => {
+        navigate("/userDashboard/pastOrders");
+    }
 
 return (
     <>
         <div className={Style['header-userDashboard']}>
             <h2><span>User</span> Dashboard</h2>
             <div id={Style['contenedorbtn']}>
-                <button className='btn btn-warning'>Past Orders</button>
-                <button className='btn btn-dark'>Logout</button>
+                <button onClick={()=> navigateToPastOrders()} className='btn btn-warning'>Past Orders</button>
+                <button onClick={()=> Logout()} className='btn btn-dark'>Logout</button>
             </div>
 
     
@@ -24,4 +38,4 @@ return (
 
 }
 
-export default header;
+export default Header;
