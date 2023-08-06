@@ -1,10 +1,10 @@
 import { GET_RESTAURANTS } from "./restaurants-type";
 import axios from "../../../axios";
 
-export const getRestaurants = () => {
+export const getRestaurants = (id) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get("/restaurant");
+      const { data } = await axios.get(`/restaurants/${id}`);
       return dispatch({
         type: GET_RESTAURANTS,
         payload: data,

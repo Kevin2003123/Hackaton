@@ -23,14 +23,15 @@ export default function Login() {
   const loginHandler = async (values, resetForm) => {
     const { username, password } = values;
     await dispatch(validateUser(username, password));
-    //dispatch(getUserByUserName(username));
+    dispatch(getUserByUserName(username));
     resetForm();
   }
 
 useEffect(() => {
+
   if (user.data) {
     const {isActive, isAdmin, isReception} = user.data
-    console.log(user.data);
+
     if (isActive) {
       
       if (isAdmin) {
@@ -42,10 +43,9 @@ useEffect(() => {
       }
 
       navigate("/userDashboard")
-   }
-
+    }
   }
-}, [user]);
+}, [userByUserName]);
 
   return (
     <div className={style["login-container"]}>
