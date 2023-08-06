@@ -6,6 +6,6 @@ const {getLocations} = require("../controllers/location")
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.post("/location", getLocations)
+router.get("/location", getLocations)
 
 module.exports = router;

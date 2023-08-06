@@ -4,7 +4,7 @@ import { Form, Formik } from "formik";
 import { loginValidationSchema } from "../../ValidactionsSchemas/loginValidation";
 import { TextInput } from "../InputText/InputText";
 import { useDispatch, useSelector } from "react-redux";
-import { validateUser } from "../../redux/actions/user";
+import { getUserByUserName, validateUser } from "../../redux/actions/user";
 import { useNavigate } from "react-router-dom";
 
 const initialValues = {
@@ -16,16 +16,19 @@ export default function Login() {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
+  const userByUserName = useSelector((state) => state.user.userByUserName)
   const resetFormRef = useRef(null);
   const navigate = useNavigate();
 
   const loginHandler = async (values, resetForm) => {
     const { username, password } = values;
     await dispatch(validateUser(username, password));
+    dispatch(getUserByUserName(username));
     resetForm();
   }
 
 useEffect(() => {
+
   if (user.data) {
     const {isActive, isAdmin, isReception} = user.data
 
@@ -39,18 +42,21 @@ useEffect(() => {
         navigate("/superDashboard");
       }
 
-      navigate("/userDashboard");
+      navigate("/userDashboard")
     }
-
   }
-}, [user]);
+}, [userByUserName]);
 
   return (
     <div id={style["loginBG"]} className={style["login-container"]}>
       <div className={style["login"]}>
         <header className={style["login-header"]}>
-          <h2>Login</h2>
-          <span>VoiceTeam Excellent Food</span>
+          <img src="/logoVoiceTeam.png" />
+
+          <br />
+          <h1>User Login</h1>
+          <h4>VoiceTeam Excellent Food</h4>
+          
         </header>
 
         <section className={style["input-section"]}>
@@ -63,12 +69,12 @@ useEffect(() => {
           >
             <Form>
               <TextInput
-                label="Nombre: "
+                label="Name: "
                 name="username"
                 type="text"
               />
               <TextInput
-                label="password: "
+                label="Password: "
                 name="password"
                 type="password"
               />
