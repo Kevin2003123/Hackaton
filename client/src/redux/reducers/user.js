@@ -1,8 +1,9 @@
 
-import { GET_USERS, USER_VALIDATE } from "../actions/action-type"
+import { GET_USERS, USER_VALIDATE, GET_USER_BY_USERNAME } from "../actions/action-type"
 const initialState = {
     users: [],
-    user: {}
+    user: {},
+    userByUserName: {}
 };
 
 const user = (state = initialState, { type, payload }) => {
@@ -17,6 +18,11 @@ const user = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 user: payload
+            };
+        case GET_USER_BY_USERNAME:
+            return {
+                ...state,
+                userByUserName: payload
             };
 
         default:
