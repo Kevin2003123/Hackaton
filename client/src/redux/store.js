@@ -5,11 +5,13 @@ import { combineReducers } from 'redux';
 // Import your other reducers here
 import user from './reducers/user';
 import user2 from './reducers/user2';
+import restaurants from './reducers/restaurants';
 
 // Combine your reducers using combineReducers
 const combinedReducers = combineReducers({
   user,
-  user2
+  user2,
+  restaurants
 });
 
 const middleware = [...getDefaultMiddleware(), thunk];

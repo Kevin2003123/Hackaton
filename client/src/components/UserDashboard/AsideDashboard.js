@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import Style from './userDasboard.module.css';
+import { useDispatch, useSelector } from "react-redux";
+import { getRestaurants } from '../../redux/actions/restaurants/restaurants';
 
 const Main = () => {
+  const dispatch = useDispatch();
+  const restaurants = useSelector((state) => state.restaurants.restaurants);
+
+  useEffect(()=> {
+    dispatch(getRestaurants());
+    //console.log(restaurants)
+  }, [])
 
 return (
     <div>

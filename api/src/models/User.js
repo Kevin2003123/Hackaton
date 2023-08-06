@@ -17,52 +17,10 @@ module.exports = (sequelize) => {
         unique: true
 
       },
-
-      name: {
-        type: DataTypes.STRING,
+      
+      amount: {
+        type: DataTypes.DECIMAL,
         allowNull: false,
-      },
-
-      lastname: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-
-      position: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        default: "user"
-      },
-
-      isActive: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
-
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      isAdmin: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        default: false
-      },
-      isReception: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        default: false
-      },
-      city:{
-        type: DataTypes.STRING,
-        allowNull: false,
-        default: "Santo Domingo"
-
-      },
-      site:{
-        type: DataTypes.STRING,
-        allowNull: false,
-        default: "A"
       },
     },
     {
