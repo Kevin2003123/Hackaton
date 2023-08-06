@@ -1,5 +1,5 @@
 
-import { GET_USERS, GET_USERS2, USER_VALIDATE } from "./action-type"
+import { GET_USERS, GET_USERS2, USER_VALIDATE, GET_USER_BY_USERNAME } from "./action-type"
 import axios from "../../axios"
 
 export const getUsers = () => {
@@ -43,5 +43,19 @@ export const validateUser = (username, password) => {
       console.log(error.message);
     }
   };
+};
 
+export const getUserByUserName = (user) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post("/user/username", {user});
+      console.log(data);
+      return dispatch({
+        type: GET_USER_BY_USERNAME,
+        payload: data,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 };

@@ -57,7 +57,8 @@ const {
   Restaurant,
   Location,
   Dish,
-  Order
+  Order,
+  User
 } = sequelize.models;
 
 
@@ -75,6 +76,12 @@ Dish.hasOne(Order)
 
 Restaurant.belongsToMany(Dish, { through: "RestaurantDish" });
 Dish.belongsToMany(Restaurant, { through: "RestaurantDish" });
+
+User.belongsTo(Location)
+Location.hasOne(User)
+
+Order.belongsTo(User)
+User.hasOne(Order)
 /*
 User.hasOne(Rating);
 Rating.belongsTo(User);
