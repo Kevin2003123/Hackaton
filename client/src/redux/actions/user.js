@@ -1,5 +1,5 @@
 
-import { GET_USERS, GET_USERS2, USER_VALIDATE } from "./action-type"
+import { GET_USERS, GET_USERS2, USER_VALIDATE, GET_USER_BY_USERNAME } from "./action-type"
 import axios from "../../axios"
 
 export const getUsers = () => {
@@ -33,18 +33,8 @@ export const getUsers2 = () => {
 export const validateUser = (username, password) => {
   return async (dispatch) => {
     try {
-      let formData = new FormData();
-      formData.append('username', username);
-      formData.append('password', password);
 
-      const config = {
-        headers: {
-          'Content-Type': 'multipart/form-data' // Configura el encabezado adecuado para FormData
-        }
-      };
-
-      const { data } = await axios.post("/user/validate", formData, config);
-
+      const { data } = await axios.post("/user/validate", {username, password});
       dispatch({
         type: USER_VALIDATE,
         payload: data,
@@ -53,5 +43,19 @@ export const validateUser = (username, password) => {
       console.log(error.message);
     }
   };
+};
 
+export const getUserByUserName = (user) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post("/user/username", {user});
+      console.log(data);
+      return dispatch({
+        type: GET_USER_BY_USERNAME,
+        payload: data,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 };

@@ -1,8 +1,53 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Style from './userDasboard.module.css';
+import { useDispatch, useSelector } from "react-redux";
+import { getRestaurants } from '../../redux/actions/restaurants/restaurants';
+import { getDishes } from '../../redux/actions/disches/disches';
+import { v4 as uuidv4 } from 'uuid';
+import Decimal from 'decimal.js'; // Importa la librería decimal.js
+import { verifyBudgedIsActive } from '../../redux/actions/orders/orders';
+import moment from 'moment';
+
 
 const Main = () => {
+  let uniqueId = uuidv4();
+
+  const dispatch = useDispatch();
+  const restaurants = useSelector((state) => state.restaurants.restaurants);
+  const disches = useSelector((state) => state.dishes.dishes);
+  const userByUserName = useSelector((state) => state.user.userByUserName)
+  const budged = useSelector((state) => state.orders.budged)
+
+  const [selectedDishes, setSelectedDishes] = useState([]);
+  const [selectedDishesList, setSelectedDishesList] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(new Decimal(0));
+
+  const handleDishToggle = (dishId, dishName, dishPrice) => {
+    const decimalPrice = new Decimal(dishPrice)
+    if (selectedDishes.includes(dishId)) {
+      setSelectedDishes(selectedDishes.filter(id => id !== dishId));
+      setSelectedDishesList(selectedDishesList.filter(name => name !== dishName));
+      setTotalPrice(prevTotalPrice => prevTotalPrice.minus(decimalPrice)); 
+    } else {
+      setSelectedDishes([...selectedDishes, dishId]);
+      setSelectedDishesList([...selectedDishesList, dishName]);
+      setTotalPrice(prevTotalPrice => prevTotalPrice.plus(decimalPrice)); 
+      console.log(selectedDishes);
+      console.log(selectedDishesList);
+    }
+  }
+
+  useEffect(()=> {
+    dispatch(getRestaurants(userByUserName.LocationId));
+    console.log(moment().format('YYYY-MM-DD'));
+    dispatch(verifyBudgedIsActive(moment().format('YYYY-MM-DD'), userByUserName.id));
+  }, [])
+
+  const heandleDisch = (e) => {
+    const keyDish = e.target.value;
+    dispatch(getDishes(keyDish));
+  }
 
 return (
     <div>
@@ -11,8 +56,8 @@ return (
         
         <div className={Style['ContenedorAside']}>
             <div id={Style['budge']}>
-                <h3>RD$0.00</h3>
-                <span>Budged Available</span>
+                <h3>RD${userByUserName.amount}</h3>
+                <span>Budged Available </span>
             </div>
 
             <div id={Style['status-order']}>
@@ -28,26 +73,34 @@ return (
             
             <div id={Style['cboPlace']}>
                 <label> Restaurants:</label>
-                    <select className='form-control'>
-                        <option>Restaurante #1</option>
-                        <option>Restaurante #2</option>
-                        <option>Restaurante #3</option>
-                        <option>Restaurante #4</option>
-                        <option>Restaurante #5</option>
-                        <option>Restaurante #6</option>
+                    <select className='form-control'
+                      onChange={heandleDisch}
+                    >
+                       <option key={0} value={0}>Restaurants</option>
+                        {restaurants.map((restaurant) => {
+                          return (
+                            <option value={restaurant.id} key={restaurant.id}>{restaurant.name}</option>
+                            )
+                        })}
                     </select>
-                
             </div>
 
             <div id={Style['label-menus']}>
                 <h2>Menú:</h2>
                 <ul>
-                    <li>Plate #1 - <span>RD$150</span></li>
-                    <li>Plate #2 - <span>RD$150</span></li>
-                    <li>Plate #3 - <span>RD$150</span></li>
-                    <li>Plate #4 - <span>RD$150</span></li>
-                    <li>Plate #5 - <span>RD$150</span></li>
-                    <li>Plate #6 - <span>RD$150</span></li>
+                    {disches?.map((dish) => {
+                        return (
+                          <>
+                            <li key={dish.id}> 
+                            <input key={uuidv4()} 
+                              type='checkbox'
+                              checked={selectedDishes.includes(dish.id)}
+                              onChange={() => handleDishToggle(dish.id, dish.name, dish.price)}
+                            /> {dish.name} - <span key={uuidv4()}>RD${dish.price}</span>
+                            </li>
+                          </>
+                        )
+                    })}
                 </ul>
             </div>
 
@@ -57,19 +110,21 @@ return (
                 <p>Dishes</p>
                 <div className={Style['container-plate-selected']}>
                     <ul>
-                        <li>Plate #1</li>
+                    {selectedDishesList.map((dishName, index) => (
+                      <li key={index}>Plate #{index + 1}: {dishName}</li>
+                     ))}
                     </ul>
                 </div>
                 
                 
                 <div id={Style['budgepay_1']}>
                     <span>Budge</span>
-                    <span>RD$75</span>
+                    <span>{budged ? "RD$0.00" : "RD$75"} </span>
                 </div>
 
                 <div id={Style['budgepay_2']}>
                     <span>You Pay</span>
-                    <span>RD$75</span>
+                    <span>RD${totalPrice.toFixed(2)}</span>
                 </div>
 
                 <button id={Style['botonPlaceOrder']} className='btn btn-warning btn-lg'>Place Order</button>

@@ -11,7 +11,7 @@
 .header-userDashboard {
     display: flex;
     margin: 10px;
-    border-bottom: 1px solid yellow;
+    border-bottom: 1px solid grey;
 }
 
 .header-userDashboard h2 span{
@@ -141,7 +141,13 @@
 
 .ContenedorOrder #label-menus ul li{
     font-size: 0.8em;
+    list-style: none;
     margin-bottom: 5px;
+    margin-left: 0px;
+}
+
+.ContenedorOrder #label-menus ul {
+    padding-left: 0px;
 }
 
 #cboPlace label{
@@ -175,8 +181,13 @@
 }
 
 .container-plate-selected ul li{
-    font-weight: bold;
-    color: orangered;
+    font-size: 0.8em;
+    margin-left: 0px;
+}
+
+.container-plate-selected ul {
+    margin-left: 0px;
+    padding-left: 10px;
 }
 
 #botonPlaceOrder{
