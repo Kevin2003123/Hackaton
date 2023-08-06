@@ -25,6 +25,11 @@
   margin-bottom: 1rem;
 }
 
+.login-header span{
+  font-weight: bold;
+  color: orangered;
+}
+
 .login-header h2 {
   font-size: 2rem;
 }

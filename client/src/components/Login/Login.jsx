@@ -48,7 +48,7 @@ useEffect(() => {
 }, [userByUserName]);
 
   return (
-    <div className={style["login-container"]}>
+    <div id={style["loginBG"]} className={style["login-container"]}>
       <div className={style["login"]}>
         <header className={style["login-header"]}>
           <img src="/logoVoiceTeam.png" />
