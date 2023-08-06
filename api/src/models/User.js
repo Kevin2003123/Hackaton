@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
         unique: true
 
       },
-      
+
       amount: {
         type: DataTypes.DECIMAL,
         allowNull: false,
